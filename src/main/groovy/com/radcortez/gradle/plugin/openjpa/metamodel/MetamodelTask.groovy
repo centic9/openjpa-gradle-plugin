@@ -19,7 +19,13 @@ class MetamodelTask extends JavaCompile {
             SourceDirectorySet mainJava = project.sourceSets.main.java
             source(mainJava.srcDirs)
 
-            setClasspath(project.configurations.compile)
+            // use "api" if "compile" is not available any more, e.g. on Gradle 7.x
+            // https://github.com/radcortez/openjpa-gradle-plugin/issues/14
+            try {
+                setClasspath(project.configurations.compile)
+            } catch (Throwable e) {
+                setClasspath(project.configurations.compileClasspath)
+            }
             setDestinationDir(project.file(configuration.metamodelOutputFolder))
 
             def openjpaConfig = project.configurations.detachedConfiguration(
