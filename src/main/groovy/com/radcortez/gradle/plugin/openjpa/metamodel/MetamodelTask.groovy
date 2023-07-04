@@ -22,7 +22,7 @@ class MetamodelTask extends JavaCompile {
             // use "api" if "compile" is not available any more, e.g. on Gradle 7.x
             // https://github.com/radcortez/openjpa-gradle-plugin/issues/14
             try {
-                setClasspath(project.configurations.compile)
+                setClasspath(project.configurations.compileClasspath)
             } catch (Throwable e) {
                 setClasspath(project.configurations.compileClasspath)
             }
