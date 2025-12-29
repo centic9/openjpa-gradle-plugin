@@ -41,7 +41,7 @@ java {
 dependencies {
     implementation gradleApi()
     implementation localGroovy()
-    implementation 'org.apache.openjpa:openjpa:3.2.2'
+    implementation 'org.apache.openjpa:openjpa:4.1.1'
 }
 
 compileGroovy {
